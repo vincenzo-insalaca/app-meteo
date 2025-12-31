@@ -1,0 +1,1 @@
+{"inputs":["C:\\DEV\\meteo\\web\\*\\index.html","C:\\DEV\\meteo\\web\\flutter_bootstrap.js","C:\\src\\flutter\\bin\\cache\\engine.stamp"],"outputs":["C:\\DEV\\meteo\\build\\web\\*\\index.html","C:\\DEV\\meteo\\build\\web\\flutter_bootstrap.js"],"buildKey":"[{\"compileTarget\":\"dart2js\",\"renderer\":\"canvaskit\",\"mainJsPath\":\"main.dart.js\"},{}]"}
