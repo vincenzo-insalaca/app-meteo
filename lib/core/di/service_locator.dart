@@ -37,11 +37,11 @@ Future<void> setupServiceLocator() async {
   sl.registerSingleton<AuthInterceptor>(AuthInterceptor());
 
   sl.registerSingleton(
-    DioClient.createWeatherDio(sl<AuthInterceptor>(), sl<Logger>()),
+    DioClient.createWeatherDio(sl<AuthInterceptor>()),
     instanceName: 'weatherDio',
   );
   sl.registerSingleton(
-    DioClient.createGeoDio(sl<AuthInterceptor>(), sl<Logger>()),
+    DioClient.createGeoDio(sl<AuthInterceptor>()),
     instanceName: 'geoDio',
   );
 

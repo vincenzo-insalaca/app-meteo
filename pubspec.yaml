@@ -23,6 +23,7 @@ dependencies:
   # Network
   dio: ^5.8.0
   dio_smart_retry: ^6.0.0
+  pretty_dio_logger: ^1.4.0
   retrofit: ^4.4.1
   json_annotation: ^4.9.0
 
@@ -59,7 +60,23 @@ dev_dependencies:
   json_serializable: ^6.9.0
   bloc_test: ^10.0.0
   mocktail: ^1.0.4
+  flutter_launcher_icons: ^0.14.3
 
 flutter:
   uses-material-design: true
   generate: true
+
+flutter_launcher_icons:
+  # Percorso immagine sorgente (1024x1024px PNG)
+  image_path: "assets/icon/icon.png"
+
+  android: true
+  ios: true
+
+  # Android — icona adattiva (Android 8+)
+  adaptive_icon_background: "#1C3A6E"   # stesso blu dello sfondo app
+  adaptive_icon_foreground: "assets/icon/icon_foreground.png"
+
+  # Web (opzionale)
+  web:
+    generate: false

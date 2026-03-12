@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:flutter/foundation.dart';
-import 'package:logger/logger.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../constants/api_constants.dart';
 import 'auth_interceptor.dart';
@@ -9,28 +9,19 @@ import 'auth_interceptor.dart';
 class DioClient {
   DioClient._();
 
-  static Dio createWeatherDio(
-    AuthInterceptor authInterceptor,
-    Logger logger,
-  ) => _buildDio(
+  static Dio createWeatherDio(AuthInterceptor authInterceptor) => _buildDio(
     baseUrl: ApiConstants.baseUrlWeather,
     authInterceptor: authInterceptor,
-    logger: logger,
   );
 
-  static Dio createGeoDio(
-    AuthInterceptor authInterceptor,
-    Logger logger,
-  ) => _buildDio(
+  static Dio createGeoDio(AuthInterceptor authInterceptor) => _buildDio(
     baseUrl: ApiConstants.baseUrlGeo,
     authInterceptor: authInterceptor,
-    logger: logger,
   );
 
   static Dio _buildDio({
     required String baseUrl,
     required AuthInterceptor authInterceptor,
-    required Logger logger,
   }) {
     final dio = Dio(
       BaseOptions(
@@ -52,10 +43,14 @@ class DioClient {
         ],
       ),
       if (kDebugMode)
-        LogInterceptor(
-          logPrint: (log) => logger.d('$log'),
-          requestBody: false,
-          responseBody: false,
+        PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseBody: true,
+          responseHeader: false,
+          compact: false,
+          error: true,
+          request: true,
         ),
     ]);
 
