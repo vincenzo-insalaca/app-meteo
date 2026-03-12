@@ -6,11 +6,13 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-// Legge key.properties se esiste (dev locale), altrimenti usa variabili d'ambiente (CI)
 val keyPropsFile = rootProject.file("key.properties")
 val keyProps = Properties().apply {
     if (keyPropsFile.exists()) load(keyPropsFile.inputStream())
 }
+
+// Keystore disponibile se key.properties esiste in locale OPPURE le env vars sono impostate in CI
+val hasReleaseKey = keyPropsFile.exists() || System.getenv("KEY_STORE_PASSWORD") != null
 
 android {
     namespace = "com.example.meteo"
@@ -27,20 +29,21 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
-    signingConfigs {
-        create("release") {
-            // In locale: valori da key.properties
-            // In CI: valori da env vars iniettate da GitHub Actions
-            storeFile = file(
-                keyProps.getProperty("storeFile")
-                    ?: System.getenv("KEY_STORE_PATH") ?: "keystore.jks"
-            )
-            storePassword = keyProps.getProperty("storePassword")
-                ?: System.getenv("KEY_STORE_PASSWORD") ?: ""
-            keyAlias = keyProps.getProperty("keyAlias")
-                ?: System.getenv("KEY_ALIAS") ?: ""
-            keyPassword = keyProps.getProperty("keyPassword")
-                ?: System.getenv("KEY_PASSWORD") ?: ""
+    // La signingConfig "release" viene creata SOLO se il keystore è disponibile
+    if (hasReleaseKey) {
+        signingConfigs {
+            create("release") {
+                storeFile = file(
+                    keyProps.getProperty("storeFile")
+                        ?: System.getenv("KEY_STORE_PATH") ?: "keystore.jks"
+                )
+                storePassword = keyProps.getProperty("storePassword")
+                    ?: System.getenv("KEY_STORE_PASSWORD") ?: ""
+                keyAlias = keyProps.getProperty("keyAlias")
+                    ?: System.getenv("KEY_ALIAS") ?: ""
+                keyPassword = keyProps.getProperty("keyPassword")
+                    ?: System.getenv("KEY_PASSWORD") ?: ""
+            }
         }
     }
 
@@ -54,7 +57,11 @@ android {
 
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = if (hasReleaseKey) {
+                signingConfigs.getByName("release")
+            } else {
+                signingConfigs.getByName("debug")
+            }
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
