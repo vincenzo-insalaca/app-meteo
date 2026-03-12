@@ -1,8 +1,15 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+}
+
+// Legge key.properties se esiste (dev locale), altrimenti usa variabili d'ambiente (CI)
+val keyPropsFile = rootProject.file("key.properties")
+val keyProps = Properties().apply {
+    if (keyPropsFile.exists()) load(keyPropsFile.inputStream())
 }
 
 android {
@@ -20,11 +27,25 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
+    signingConfigs {
+        create("release") {
+            // In locale: valori da key.properties
+            // In CI: valori da env vars iniettate da GitHub Actions
+            storeFile = file(
+                keyProps.getProperty("storeFile")
+                    ?: System.getenv("KEY_STORE_PATH") ?: "keystore.jks"
+            )
+            storePassword = keyProps.getProperty("storePassword")
+                ?: System.getenv("KEY_STORE_PASSWORD") ?: ""
+            keyAlias = keyProps.getProperty("keyAlias")
+                ?: System.getenv("KEY_ALIAS") ?: ""
+            keyPassword = keyProps.getProperty("keyPassword")
+                ?: System.getenv("KEY_PASSWORD") ?: ""
+        }
+    }
+
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.meteo"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
@@ -33,9 +54,13 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 }

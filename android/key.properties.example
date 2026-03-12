@@ -1,0 +1,7 @@
+# Copia questo file in android/key.properties e compilalo con i tuoi valori.
+# NON aggiungere key.properties al controllo versione.
+
+storeFile=../keystore/meteo-release.jks
+storePassword=cambia_questa_password
+keyAlias=meteo
+keyPassword=cambia_questa_password

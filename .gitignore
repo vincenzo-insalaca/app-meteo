@@ -1,45 +1,51 @@
-.gradle
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
 build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
+# Generati da build_runner (Retrofit/json_serializable) — si rigenerano con:
+# dart run build_runner build --delete-conflicting-outputs
+*.g.dart
+*.freezed.dart
+
+# I file l10n generati (lib/generated/) SI committano:
+# sono deterministici e necessari per l'IDE.
+
+# Dipendenze
+.pub-cache/
+.pub/
+
+# IDE
+.idea/
+.vscode/
 *.iml
 *.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+*.iws
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+# Android
+android/.gradle/
+android/captures/
+android/local.properties
+android/key.properties
+android/keystore/
+*.jks
+*.keystore
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# iOS
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/flutter_export_environment.sh
 
-### VS Code ###
-.vscode/
+# macOS
+macos/Pods/
 
-### Mac OS ###
+# Env / Secrets
+.env
+.env.*
+*.pem
+
+# OS
 .DS_Store
-# Project exclude paths
-/gradle/
-/src/
+Thumbs.db
