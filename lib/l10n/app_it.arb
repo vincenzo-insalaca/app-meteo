@@ -1,0 +1,118 @@
+{
+  "@@locale": "it",
+
+  "appTitle": "Meteo",
+  "@appTitle": { "description": "App title" },
+
+  "searchHint": "Cerca città...",
+  "@searchHint": { "description": "Search bar placeholder" },
+
+  "clearSearch": "Cancella ricerca",
+  "@clearSearch": { "description": "Tooltip for clear search button" },
+
+  "locationButton": "Usa posizione GPS",
+  "@locationButton": { "description": "Tooltip for GPS location button" },
+
+  "favoritesButton": "Preferiti",
+  "@favoritesButton": { "description": "Tooltip for favorites button" },
+
+  "refreshing": "Aggiornamento in corso...",
+  "@refreshing": { "description": "Refreshing indicator label" },
+
+  "today": "Oggi",
+  "@today": { "description": "Label for today" },
+
+  "feelsLike": "Percepita",
+  "@feelsLike": { "description": "Feels like label" },
+
+  "humidity": "Umidità",
+  "@humidity": { "description": "Humidity label" },
+
+  "wind": "Vento",
+  "@wind": { "description": "Wind label" },
+
+  "windUnit": "{speed} km/h",
+  "@windUnit": {
+    "description": "Wind speed with unit",
+    "placeholders": { "speed": { "type": "String" } }
+  },
+
+  "humidityValue": "{value}%",
+  "@humidityValue": {
+    "description": "Humidity with percent sign",
+    "placeholders": { "value": { "type": "int" } }
+  },
+
+  "temperatureDegree": "{temp}°",
+  "@temperatureDegree": {
+    "description": "Temperature with degree sign",
+    "placeholders": { "temp": { "type": "int" } }
+  },
+
+  "minMax": "Max: {max}°  Min: {min}°",
+  "@minMax": {
+    "description": "Min max temperatures",
+    "placeholders": {
+      "max": { "type": "int" },
+      "min": { "type": "int" }
+    }
+  },
+
+  "noConnection": "Nessuna connessione internet",
+  "@noConnection": { "description": "No internet connection error" },
+
+  "cityNotFound": "Città non trovata",
+  "@cityNotFound": { "description": "City not found error" },
+
+  "invalidApiKey": "Chiave API non valida",
+  "@invalidApiKey": { "description": "Invalid API key error" },
+
+  "unknownError": "Errore imprevisto",
+  "@unknownError": { "description": "Unknown error" },
+
+  "retry": "Riprova",
+  "@retry": { "description": "Retry button label" },
+
+  "locationSemantic": "Posizione",
+  "@locationSemantic": { "description": "Semantic label for location icon" },
+
+  "favoritesTitle": "Preferiti",
+  "@favoritesTitle": { "description": "Favorites page title" },
+
+  "noFavorites": "Nessuna città salvata",
+  "@noFavorites": { "description": "Empty favorites message" },
+
+  "noFavoritesHint": "Cerca una città e tocca la stella per salvarla",
+  "@noFavoritesHint": { "description": "Hint for adding favorites" },
+
+  "addToFavorites": "Aggiungi ai preferiti",
+  "@addToFavorites": { "description": "Tooltip to add to favorites" },
+
+  "removeFromFavorites": "Rimuovi dai preferiti",
+  "@removeFromFavorites": { "description": "Tooltip to remove from favorites" },
+
+  "severeWeatherTitle": "Allerta meteo",
+  "@severeWeatherTitle": { "description": "Severe weather notification title" },
+
+  "severeWeatherBody": "Attenzione: {condition} previsto a {city}",
+  "@severeWeatherBody": {
+    "description": "Severe weather notification body",
+    "placeholders": {
+      "condition": { "type": "String" },
+      "city": { "type": "String" }
+    }
+  },
+
+  "dailySummaryTitle": "Previsioni del giorno",
+  "@dailySummaryTitle": { "description": "Daily summary notification title" },
+
+  "dailySummaryBody": "{city}: {temp}°, {condition}",
+  "@dailySummaryBody": {
+    "description": "Daily summary notification body",
+    "placeholders": {
+      "city": { "type": "String" },
+      "temp": { "type": "int" },
+      "condition": { "type": "String" }
+    }
+  }
+}

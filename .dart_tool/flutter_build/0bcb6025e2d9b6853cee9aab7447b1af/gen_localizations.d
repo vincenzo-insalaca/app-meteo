@@ -1,0 +1,1 @@
+ C:\\DEV\\meteo\\lib\\generated\\l10n\\app_localizations_en.dart C:\\DEV\\meteo\\lib\\generated\\l10n\\app_localizations_it.dart C:\\DEV\\meteo\\lib\\generated\\l10n\\app_localizations.dart:  C:\\DEV\\meteo\\l10n.yaml C:\\DEV\\meteo\\lib\\l10n\\app_en.arb C:\\DEV\\meteo\\lib\\l10n\\app_it.arb

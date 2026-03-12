@@ -1,0 +1,1 @@
+ C:\\DEV\\meteo\\.dart_tool\\flutter_build\\0bcb6025e2d9b6853cee9aab7447b1af\\native_assets.json: 

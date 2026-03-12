@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
-import 'views/weather_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
-  initializeDateFormatting('it_IT', null).then((_) {
-    runApp(const MyApp());
-  });
-}
+import 'app.dart';
+import 'core/di/service_locator.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: WeatherPage(),
-    );
-  }
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('it_IT', null);
+  await setupServiceLocator();
+  runApp(const MeteoApp());
 }

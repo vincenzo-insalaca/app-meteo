@@ -1,1 +1,1 @@
-{"inputs":[],"outputs":[]}
+{"inputs":["C:\\src\\flutter\\packages\\flutter_tools\\lib\\src\\build_system\\targets\\localizations.dart","C:\\DEV\\meteo\\l10n.yaml","C:\\DEV\\meteo\\lib\\l10n\\app_en.arb","C:\\DEV\\meteo\\lib\\l10n\\app_it.arb"],"outputs":["C:\\DEV\\meteo\\lib\\generated\\l10n\\app_localizations_en.dart","C:\\DEV\\meteo\\lib\\generated\\l10n\\app_localizations_it.dart","C:\\DEV\\meteo\\lib\\generated\\l10n\\app_localizations.dart"]}
